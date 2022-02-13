@@ -1,0 +1,12 @@
+name: docker-build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jemand771/docker-build-action@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
