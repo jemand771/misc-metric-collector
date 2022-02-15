@@ -18,7 +18,7 @@ class TankerKCollector(CollectorBase):
             self.id_to_name[id_] = self.request_name(id_)
 
     def collect(self):
-        g = GaugeMetricFamily("price", "fuel price", labels=["station_id", "station_name", "fuel_type"])
+        g = GaugeMetricFamily("fuel_price", "fuel price", labels=["station_id", "station_name", "fuel_type"])
         for id_, prices in self.request_prices(list(self.id_to_name)).items():
             for fuel_type, value in prices.items():
                 g.add_metric([id_, self.id_to_name[id_], fuel_type], value)
